@@ -7,25 +7,25 @@ namespace McfFeApp.WebApp.Controllers
     public class BpkbTransactionController : Controller
     {
 
-        private readonly IHttpClientFactory httpClientFactory;
+        private readonly IHttpClientFactory _httpClientFactory;
 
         public BpkbTransactionController(IHttpClientFactory httpClientFactory)
         {
-            this.httpClientFactory = httpClientFactory;
+            this._httpClientFactory = httpClientFactory;
         }
 
         private async Task<T?> InvokeEndpoint<T>(string clientName, string url)
         {
             BpkpTransaction? bpkbTransaction;
 
-            var httpClient = httpClientFactory.CreateClient(clientName);
+            var httpClient = _httpClientFactory.CreateClient(clientName);
 
             return await httpClient.GetFromJsonAsync<T>(url);
         }
 
         public async Task<IActionResult> Index()
         {
-            using var httpClient = httpClientFactory.CreateClient("McfAPI");
+            using var httpClient = _httpClientFactory.CreateClient("McfAPI");
 
             var getResult = await httpClient.GetFromJsonAsync<List<StorageLocation>>("StorageLocation");
 
@@ -39,7 +39,7 @@ namespace McfFeApp.WebApp.Controllers
         {
             if (ModelState.IsValid) 
             {
-                using var httpClient = httpClientFactory.CreateClient("McfAPI");
+                using var httpClient = _httpClientFactory.CreateClient("McfAPI");
 
                 var result = await httpClient.PostAsJsonAsync("bpkptransaction", bpkpTransaction );
 
