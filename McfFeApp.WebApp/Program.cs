@@ -5,7 +5,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient("McfAPI", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:44302/");
+    client.BaseAddress = new Uri("https://localhost:7177/");
 });
 
 var app = builder.Build();
