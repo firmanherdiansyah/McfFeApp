@@ -1,5 +1,71 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using McfFeApp.WebApp.Dto
+@model BpkpTransaction
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="row pt-4">
+        <div class="alert alert-success" role="alert">
+            @TempData["AlertMessage"]
+        </div>
+    </div>
+
+} 
+<div class="container">
+<form method="post">    
+    <div class="row">
+        <div class="col-sm">
+            <div class="mb-3">
+                <label asp-for="AgrrementNumber"></label>
+                <input asp-for="AgrrementNumber" class="form-control" />
+                <span asp-validation-for="AgrrementNumber" class="text-danger"></span>
+            </div>
+                <div class="mb-3">
+                    <label asp-for="BranchId"></label>
+                    <input asp-for="BranchId" class="form-control" />
+                    <span asp-validation-for="BranchId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="BpkbNumber"></label>
+                    <input asp-for="BpkbNumber" class="form-control" />
+                    <span asp-validation-for="BpkbNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="BpkbDateIn"></label>
+                    <input asp-for="BpkbDateIn" class="form-control" placeholder="mm/dd/yyy" />
+                    <span asp-validation-for="BpkbDateIn" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="BpkbDate"></label>
+                    <input asp-for="BpkbDate" class="form-control" placeholder="mm/dd/yyy" />
+                    <span asp-validation-for="BpkbDate" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="FakturNumber"></label>
+                    <input asp-for="FakturNumber" class="form-control" />
+                    <span asp-validation-for="FakturNumber" class="text-danger"></span>
+                </div>
+        </div>
+        <div class="col-sm">
+            <div class="mb-3">
+                <label asp-for="FakturDate"></label>
+                    <input asp-for="FakturDate" class="form-control" placeholder="mm/dd/yyy" />
+                <span asp-validation-for="FakturDate" class="text-danger"></span>
+            </div>
+                <div class="mb-3">
+                    <label asp-for="PoliceNumber"></label>
+                    <input asp-for="PoliceNumber" class="form-control" />
+                    <span asp-validation-for="PoliceNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="LocationId"></label>
+                    <select asp-for="LocationId" asp-items="ViewBag.Location" class="form-select"></select>
+                    <span asp-validation-for="LocationId" class="text-danger"></span>
+                </div>
+        </div>
+    </div> 
+    <div class="row">            
+            <button type="submit" class="btn btn-primary" style="width:150px">Save</button>
+    </div>
+    
+</form>
+</div>
